@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.content_main);
 
         final MioAdapter adapter = new MioAdapter();
+
+        ListView listView = (ListView)findViewById(R.id.listview);
+        listView.setAdapter(adapter);
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             if(convertView == null){
                 LayoutInflater inflater = (LayoutInflater)parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.element_layout, parent);
+                convertView = inflater.inflate(R.layout.element_layout, null);
             }
 
             MioElemento mioElemento = array.get(position);
